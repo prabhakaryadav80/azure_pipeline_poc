@@ -3,9 +3,11 @@ from ubuntu:18.04
 #arguments
 ARG BRANCH
 
+RUN pwd
+
 RUN mkdir ~/.ssh
 
-COPY ssh_private_key ./
-RUN mv ./ssh_private_key ~/.ssh/id_rsa
+COPY secure_file ./
+RUN mv ./secure_file ~/.ssh/id_rsa
 
 RUN echo ~/.ssh/id_rsa
