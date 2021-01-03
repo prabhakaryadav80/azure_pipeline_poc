@@ -31,7 +31,7 @@ steps:
   inputs:
     repository: '$(Build.DefinitionName)'
     command: 'build'
-    Dockerfile: '**/Dockerfile'
+    Dockerfile: 'DockerFile'
     buildContext: '.'
     tags: '$(Build.BuildId)-$(Build.SourceVersion)'
     arguments: '--build-arg "BRANCH=$(Build.SourceBranchName)"'
