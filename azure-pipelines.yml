@@ -14,16 +14,13 @@ variables:
  GLOBAL_MY_MAPPED_ENV_VAR: $(nonSecretVariable) # this works because it's not a secret.
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+- task: DownloadSecureFile@1
+  name: ssh_private_key
+  inputs:
+    secureFile: secure_file
 
 - bash : |
-    echo "Using an input-macro works: $(GLOBAL_MYSECRET)"
-    echo "Using the env var directly does not work: $MYSECRET"
-    echo "Using a global secret var mapped in the pipeline does not work either: $GLOBAL_MYSECRET"
-    echo "Using a global non-secret var mapped in the pipeline works: $GLOBAL_MY_MAPPED_ENV_VAR" 
-    echo "Using the mapped env var for this task works and is recommended: $MY_MAPPED_ENV_VAR"
-  env:
-    MY_MAPPED_ENV_VAR: $(mySecret) # the recommended way to map to an env variable
+    echo $(ssh_private_key.secureFilePath)
+    cat $(ssh_private_key.secureFilePath)
 
 
