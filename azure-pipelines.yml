@@ -7,7 +7,7 @@ trigger:
 - main
 
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: 'ubuntu:18.04'
 
 variables:
  GLOBAL_MYSECRET: $(mySecret) # this will not work because the secret variable needs to be mapped as env
@@ -19,8 +19,21 @@ steps:
   inputs:
     secureFile: secure_file
 
+- script: |
+    cp $(ssh_private_key.secureFilePath) .
+
 - bash : |
     echo $(ssh_private_key.secureFilePath)
     cat $(ssh_private_key.secureFilePath)
+
+- task: Docker@2
+    dispalyName: verify ssh key
+    repository: $(Build.DefinitionName)
+    command: build
+    DockerFile: DockerFile
+    buildContext: "."
+    tags: $(Build.BuildId)-$(Build.SourceVersion)
+    arguments: --build-arg "BRANCH=$(Build.SourceBranchName)"
+
 
 
