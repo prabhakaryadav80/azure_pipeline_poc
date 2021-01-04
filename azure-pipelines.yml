@@ -22,7 +22,7 @@ steps:
     echo $(ssh_private_key.secureFilePath)
     cat $(ssh_private_key.secureFilePath)
     PRIVATE_KEY=`cat $(ssh_private_key.secureFilePath)`
-    echo "$PRIVATE_KEY"
+    echo $PRIVATE_KEY
 
 - task: Docker@2
   displayName: verify ssh key
@@ -32,7 +32,7 @@ steps:
     Dockerfile: 'DockerFile'
     buildContext: '.'
     tags: '$(Build.BuildId)-$(Build.SourceVersion)'
-    arguments: '--build-arg "BRANCH=$(ssh_private_key.secureFilePath)"'
+    arguments: '--build-arg "BRANCH=$PRIVATE_KEY"'
 
 
 
