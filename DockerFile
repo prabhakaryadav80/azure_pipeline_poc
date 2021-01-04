@@ -3,7 +3,7 @@ from ubuntu:18.04
 #arguments
 ARG BRANCH
 
-RUN pwd
+echo "$BRANCH"
 
 RUN mkdir ~/.ssh
 
