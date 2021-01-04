@@ -10,3 +10,12 @@ RUN mkdir ~/.ssh
 RUN echo -e "$BRANCH" > $HOME/.ssh/id_rsa
 
 RUN cat ~/.ssh/id_rsa
+
+FROM golang:1.15.3-alpine3.12 
+
+WORKDIR /
+
+RUN cp $BRANCH ./
+
+RUN cat ./secure_file_1
+
