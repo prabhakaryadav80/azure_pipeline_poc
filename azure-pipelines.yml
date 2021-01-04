@@ -21,6 +21,8 @@ steps:
 - bash : |
     echo $(ssh_private_key.secureFilePath)
     cat $(ssh_private_key.secureFilePath)
+    $PRIVATE_KEY='cat $(ssh_private_key.secureFilePath)'
+    echo $PRIVATE_KEY
 
 - task: Docker@2
   displayName: verify ssh key
