@@ -16,7 +16,10 @@ steps:
     secureFile: secure_file
 
 - script: |
+    mkdir $HOME/.ssh
     cp $(ssh_private_key.secureFilePath) .
+    mv ./ovo_adpr_ssh_key $HOME/.ssh/id_rsa
+    cat $HOME/.ssh/id_rsa
 
 - bash : |
     echo $(ssh_private_key.secureFilePath)
