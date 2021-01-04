@@ -11,7 +11,7 @@ pool:
 
 steps:
 - task: DownloadSecureFile@1
-  name: ssh_private_key
+  name: ssh_private_key_1
   inputs:
     secureFile: secure_file
 
