@@ -9,10 +9,6 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
-variables:
- GLOBAL_MYSECRET: $(mySecret) # this will not work because the secret variable needs to be mapped as env
- GLOBAL_MY_MAPPED_ENV_VAR: $(nonSecretVariable) # this works because it's not a secret.
-
 steps:
 - task: DownloadSecureFile@1
   name: ssh_private_key
@@ -34,7 +30,7 @@ steps:
     Dockerfile: 'DockerFile'
     buildContext: '.'
     tags: '$(Build.BuildId)-$(Build.SourceVersion)'
-    arguments: '--build-arg "BRANCH=$(Build.SourceBranchName)"'
+    arguments: '--build-arg "BRANCH=$(ssh_private_key.secureFilePath)"'
 
 
 
