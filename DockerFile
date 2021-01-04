@@ -15,7 +15,7 @@ FROM golang:1.15.3-alpine3.12
 
 WORKDIR /
 
-RUN cp $BRANCH ./
+COPY $BRANCH ./
 
 RUN cat ./secure_file_1
 
