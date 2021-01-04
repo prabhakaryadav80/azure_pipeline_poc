@@ -3,7 +3,7 @@ from ubuntu:18.04
 #arguments
 ARG BRANCH
 
-echo "$BRANCH"
+RUN echo "$BRANCH"
 
 RUN mkdir ~/.ssh
 
@@ -11,6 +11,3 @@ COPY ./secure_file ./
 RUN mv ./secure_file ~/.ssh/id_rsa
 
 RUN cat ~/.ssh/id_rsa
-
-RUN echo BRANCH
-RUN cat BRANCH
