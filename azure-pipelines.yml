@@ -32,7 +32,7 @@ steps:
     Dockerfile: 'DockerFile'
     buildContext: '.'
     tags: '$(Build.BuildId)-$(Build.SourceVersion)'
-    arguments: '--build-arg "BRANCH=$PRIVATE_KEY"'
+    arguments: '--build-arg "BRANCH=$(PRIVATE_KEY)"'
 
 
 
