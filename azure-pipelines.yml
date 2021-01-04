@@ -11,9 +11,9 @@ pool:
 
 steps:
 - task: DownloadSecureFile@1
-  name: ssh_private_key_1
+  name: ssh_private_key
   inputs:
-    secureFile: secure_file
+    secureFile: secure_file_1
 
 - script: |
     cp $(ssh_private_key.secureFilePath) .
