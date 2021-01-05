@@ -19,11 +19,6 @@ steps:
     cp $(ssh_private_key.secureFilePath) .
     pwd 
     ls
-    
-- bash : |
-    cp $(ssh_private_key.secureFilePath) .
-    PRIVATE_KEY=`echo $(ssh_private_key.secureFilePath)`
-    echo "##vso[task.setvariable variable=PRIVATE_KEY]$PRIVATE_KEY"
 
 - task: Docker@2
   displayName: verify ssh key
