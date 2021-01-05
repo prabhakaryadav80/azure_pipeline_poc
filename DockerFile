@@ -3,6 +3,8 @@ from ubuntu:18.04
 #arguments
 ARG BRANCH
 
+WORKDIR /
+
 RUN apk add tree
 
 RUN tree
