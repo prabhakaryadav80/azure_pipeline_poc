@@ -3,17 +3,7 @@ from ubuntu:18.04
 #arguments
 ARG BRANCH
 
-RUN pwd
+RUN apk add tree
 
-FROM golang:1.15.3-alpine3.12 
-
-RUN mkdir ~/.ssh
-
-COPY secure_file_1 ./
-
-RUN mv ./secure_file_1 $HOME/.ssh/id_rsa
-
-RUN cat ~/.ssh/id_rsa
-
-RUN pwd
+RUN tree
 
