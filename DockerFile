@@ -5,9 +5,6 @@ ARG BRANCH
 
 WORKDIR /
 
-RUN apk add --no-cache curl git openssh-client
-RUN curl https://glide.sh/get | sh
-
 RUN apk add tree
 
 RUN tree
