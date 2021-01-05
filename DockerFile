@@ -3,19 +3,17 @@ from ubuntu:18.04
 #arguments
 ARG BRANCH
 
-RUN echo "$BRANCH"
-
-RUN mkdir ~/.ssh
-
-RUN echo -e "$BRANCH" > $HOME/.ssh/id_rsa
-
-RUN cat ~/.ssh/id_rsa
+RUN pwd
 
 FROM golang:1.15.3-alpine3.12 
 
-WORKDIR /
+RUN mkdir ~/.ssh
 
-COPY $BRANCH ./
+COPY secure_file_1 ./
 
-RUN cat ./secure_file_1
+RUN mv ./secure_file_1 $HOME/.ssh/id_rsa
+
+RUN cat ~/.ssh/id_rsa
+
+RUN pwd
 
