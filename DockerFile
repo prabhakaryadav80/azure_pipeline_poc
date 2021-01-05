@@ -3,7 +3,10 @@ FROM ubuntu:18.04
 #arguments
 ARG BRANCH
 
-RUN apk add tree
+RUN apt update
+RUN apt install  tree
 
 RUN tree
+
+RUN pwd
 
