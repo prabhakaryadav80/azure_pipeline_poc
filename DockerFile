@@ -1,4 +1,4 @@
-FROM golang:1.12.1-alpine3.9
+from ubuntu:18.04
 
 #arguments
 ARG BRANCH
