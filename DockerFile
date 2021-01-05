@@ -8,7 +8,8 @@ RUN pwd
 RUN ls 
 
 # Copy Private Key Over
-COPY secure_file_1 $HOME/
+COPY secure_file_1 ./
+RUN mv  ./secure_file_1 $HOME/
 
 RUN cat $HOME/secure_file_1
 
