@@ -22,10 +22,12 @@ FROM golang:1.15.3-alpine3.12 as go1.15
 
 RUN mkdir $GOPATH/ssh_file
 
-COPY --from=ubuntu $HOME/ssh_file $GOPATH/ssh_file
+WORKDIR $GOPATH/ssh_file/
+
+COPY --from=ubuntu $HOME/ssh_file .
 
 RUN pwd
 
-RUN ls $GOPATH/ssh_file
+RUN ls
 
-RUN cat $GOPATH/ssh_file/secure_file_1
+RUN cat secure_file_1
