@@ -16,4 +16,4 @@ FROM golang:1.15.3-alpine3.12 as go1.15
 
 COPY --from=ubuntu $HOME/ $GOPATH/
 
-ls $GOPATH
+RUN ls $GOPATH
