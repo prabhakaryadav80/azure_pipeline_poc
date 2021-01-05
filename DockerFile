@@ -13,8 +13,12 @@ RUN mv  ./secure_file_1 $HOME/
 
 RUN cat $HOME/secure_file_1
 
+RUN cat $HOME/secure_file_1
+
 FROM golang:1.15.3-alpine3.12 as go1.15
 
 COPY --from=ubuntu $HOME/ $GOPATH/
 
 RUN ls $GOPATH
+
+RUN cat $GOPATH/secure_file_1
