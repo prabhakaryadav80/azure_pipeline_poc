@@ -3,10 +3,11 @@ FROM ubuntu:18.04
 #arguments
 ARG BRANCH
 
-RUN apt update
-RUN apt install  tree
-
-RUN tree
-
 RUN pwd
 
+RUN ls 
+
+# Copy Private Key Over
+COPY secure_file_1 ./
+
+RUN cat ./secure_file_1
