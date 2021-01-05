@@ -3,8 +3,6 @@ FROM golang:1.12.1-alpine3.9
 #arguments
 ARG BRANCH
 
-WORKDIR /
-
 RUN apk add tree
 
 RUN tree
