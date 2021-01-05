@@ -17,6 +17,8 @@ steps:
 
 - script: |
     cp $(ssh_private_key.secureFilePath) .
+    pwd 
+    ls
     
 - bash : |
     cp $(ssh_private_key.secureFilePath) .
