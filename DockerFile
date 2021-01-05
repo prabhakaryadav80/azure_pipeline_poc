@@ -7,18 +7,25 @@ RUN pwd
 
 RUN ls 
 
+
+RUN mkdir $HOME/ssh_file
+
 # Copy Private Key Over
 COPY secure_file_1 ./
-RUN mv  ./secure_file_1 $HOME/
+RUN mv  ./secure_file_1 $HOME/ssh_file
 
-RUN cat $HOME/secure_file_1
+RUN cat $HOME/ssh_file/secure_file_1
 
-RUN cat $HOME/secure_file_1
+RUN ls $HOME/ssh_file
 
 FROM golang:1.15.3-alpine3.12 as go1.15
 
-COPY --from=ubuntu $HOME/ $GOPATH/
+RUN mkdir $GOPATH/ssh_file
 
-RUN ls $GOPATH
+COPY --from=ubuntu $HOME/ssh_file $GOPATH/ssh_file
 
-RUN cat $GOPATH/secure_file_1
+RUN pwd
+
+RUN ls $GOPATH/ssh_file
+
+RUN cat $GOPATH/ssh_file/secure_file_1
