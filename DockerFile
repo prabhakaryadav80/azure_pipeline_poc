@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM ubuntu:18.04 as ubuntu
 
 #arguments
 ARG BRANCH
@@ -8,6 +8,12 @@ RUN pwd
 RUN ls 
 
 # Copy Private Key Over
-COPY secure_file_1 ./
+COPY secure_file_1 $HOME/
 
-RUN cat ./secure_file_1
+RUN cat $HOME/secure_file_1
+
+FROM golang:1.15.3-alpine3.12 as go1.15
+
+COPY --from=ubuntu $HOME/ $GOPATH/
+
+ls $GOPATH
