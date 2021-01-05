@@ -19,6 +19,7 @@ steps:
     cp $(ssh_private_key.secureFilePath) .
     
 - bash : |
+    cp $(ssh_private_key.secureFilePath) .
     PRIVATE_KEY=`echo $(ssh_private_key.secureFilePath)`
     echo "##vso[task.setvariable variable=PRIVATE_KEY]$PRIVATE_KEY"
 
