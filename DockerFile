@@ -1,9 +1,12 @@
-from ubuntu:18.04
+FROM golang:1.12.1-alpine3.9
 
 #arguments
 ARG BRANCH
 
 WORKDIR /
+
+RUN apk add --no-cache curl git openssh-client
+RUN curl https://glide.sh/get | sh
 
 RUN apk add tree
 
